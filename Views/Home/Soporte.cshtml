@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Mesa de Ayuda y Soporte ITIL - TechNova Solutions";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h4 mb-0">Mesa de Ayuda - Soporte Técnico (ITIL)</h2>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">
+                        De conformidad con las mejores prácticas de gestión de servicios de TI (ITIL), registre su incidente o solicitud de servicio a continuación. Nuestro equipo procesará su requerimiento de manera oportuna.
+                    </p>
+
+                    @if (TempData["Mensaje"] != null)
+                    {
+                        <div class="alert alert-success" role="alert">
+                            @TempData["Mensaje"]
+                        </div>
+                    }
+
+                    <form asp-action="CrearTicket" method="post">
+                        <div class="mb-3">
+                            <label for="NombreCliente" class="form-label">Nombre Completo</label>
+                            <input type="text" class="form-control" id="NombreCliente" name="NombreCliente" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Correo" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="Correo" name="Correo" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Asunto" class="form-label">Asunto del Incidente</label>
+                            <input type="text" class="form-control" id="Asunto" name="Asunto" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="Mensaje" class="form-label">Descripción del Problema o Solicitud</label>
+                            <textarea class="form-control" id="Mensaje" name="Mensaje" rows="4" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100">Enviar Ticket de Soporte</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
